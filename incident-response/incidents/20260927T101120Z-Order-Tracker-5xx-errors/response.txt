@@ -1,0 +1,9 @@
+**1. Real or test?** It's real. The Prometheus counter shows about 3.25 HTTP 500s on `/api/orders/{order_id}` in the last 5 minutes and zero 404s, so these aren't just "order not found" misses.
+
+**2. What's broken:** `GET /api/orders/{order_id}` fails for express orders. Every recent log line is `order lookup hit order_id=express-1002 status=preparing`, which is written just before `order_detail(row)` is called (`app/main.py:153`). So the database lookup works and the crash comes after it. The logs and traces contain no exception text, so the cause is inferred from the code.
+
+**Likely root cause:** `order_detail` (`app/main.py:77`) calculates the delivery estimate with `placed_at.replace(day=placed_at.day + 2)`. The seed order `express-1002` is dated `previous_month_end` (`app/main.py:60`), so this asks for day 32 or 33 (for example, Aug 31 plus 2). That raises `ValueError: day is out of range for month`, which returns a 500. Any express order placed in the last two days of a month will fail the same way.
+
+**3. Next step:** Escalate to a developer. The fix is `placed_at + timedelta(days=2)` (`timedelta` is already imported), plus a regression test for an order placed at month end. As a separate follow-up, error logging should capture the exception so the next incident shows its cause.
+
+Verdict: Real incident: express order lookups return 500 because of a month-end date bug in `order_detail`; escalate to a developer.

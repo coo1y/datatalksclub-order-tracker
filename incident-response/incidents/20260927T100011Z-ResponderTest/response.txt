@@ -1,0 +1,12 @@
+**1. Real incident or test?** This is a test. The alert is `ResponderTest` with the label `test: "true"`, and its summary says "Test notification; no incident to fix".
+
+**2. Does the telemetry show a problem?** No. It shows a healthy service:
+- **Metrics:** `/healthz` has about 177 requests, all returning 200. There is 1 request to `/api/orders/{order_id}` that returned 404, and no 5xx responses.
+- **Logs:** There is one WARN line, `order lookup miss order_id=standard-1002` (`get_order`, `app/main.py:146`). That is a normal "order not found" response, which matches the single 404. There are no ERROR entries.
+- **Traces:** All 20 recent traces are `GET /healthz`, each taking about 1 ms. None contain errors.
+
+No endpoint is affected, and there is no root cause to find.
+
+**3. Next step:** Nothing needs fixing and nothing needs to go to a developer. The alert just confirms that the path from Grafana to the webhook to the responder works. If you want, you could check whether `standard-1002` should exist, but a single 404 is normal.
+
+Verdict: Test alert, not an incident. The service is healthy and no action or escalation is needed.

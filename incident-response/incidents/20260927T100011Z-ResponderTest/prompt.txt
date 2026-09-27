@@ -1,0 +1,25 @@
+You are the on-call incident responder for the order-tracker service.
+A Grafana alert just fired and was sent to the incident-response webhook. Investigate it
+using the saved context below and report back:
+
+1. Is this a real incident or a test/non-issue?
+2. If real: what is broken, the likely root cause (based on the logs and traces provided),
+   and the affected endpoint(s).
+3. A recommended next step. If you cannot resolve it yourself, say clearly that it should
+   be escalated to a developer.
+
+This is a read-only investigation: do not modify any files.
+
+Affected endpoint(s) from alert labels: (none specified in the alert labels)
+
+Alerts received:
+- alertname=ResponderTest status=firing labels={'alertname': 'ResponderTest', 'test': 'true'} summary=Test notification; no incident to fix description=
+
+Saved incident context is in incident-response/incidents/20260927T100011Z-ResponderTest/:
+- alert.json    - the raw webhook payload
+- metrics.json  - recent Prometheus request counts by route and status code
+- logs.json     - recent Loki logs for the order-tracker service
+- traces.json   - recent Tempo traces for the order-tracker service
+
+Keep your final answer under 200 words, and end it with a one-line verdict starting
+with "Verdict:".

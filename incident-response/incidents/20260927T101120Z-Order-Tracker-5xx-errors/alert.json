@@ -1,0 +1,52 @@
+{
+  "receiver": "incident-responder",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alertname": "Order Tracker 5xx errors",
+        "grafana_folder": "Order Tracker Alerts",
+        "http_route": "/api/orders/{order_id}",
+        "severity": "critical"
+      },
+      "annotations": {
+        "description": "/api/orders/{order_id} returned 3.250569230769231 server error(s) (5xx) over the last 5 minutes. Dashboard: http://localhost:3000/d/order-tracker/order-tracker",
+        "summary": "5xx errors on /api/orders/{order_id}"
+      },
+      "startsAt": "2026-09-27T10:11:20Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "http://localhost:3000/alerting/grafana/order-tracker-5xx/view?orgId=1",
+      "fingerprint": "0fc5e011fffaf7e1",
+      "silenceURL": "http://localhost:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DOrder+Tracker+5xx+errors&matcher=grafana_folder%3DOrder+Tracker+Alerts&matcher=http_route%3D%2Fapi%2Forders%2F%7Border_id%7D&matcher=severity%3Dcritical&orgId=1",
+      "dashboardURL": "http://localhost:3000/d/order-tracker?orgId=1",
+      "panelURL": "http://localhost:3000/d/order-tracker?orgId=1&viewPanel=2",
+      "values": {
+        "A": 3.250569230769231,
+        "C": 1
+      },
+      "valueString": "[ var='A' labels={http_route=/api/orders/{order_id}} value=3.250569230769231 ], [ var='C' labels={http_route=/api/orders/{order_id}} value=1 ]"
+    }
+  ],
+  "groupLabels": {
+    "alertname": "Order Tracker 5xx errors"
+  },
+  "commonLabels": {
+    "alertname": "Order Tracker 5xx errors",
+    "grafana_folder": "Order Tracker Alerts",
+    "http_route": "/api/orders/{order_id}",
+    "severity": "critical"
+  },
+  "commonAnnotations": {
+    "description": "/api/orders/{order_id} returned 3.250569230769231 server error(s) (5xx) over the last 5 minutes. Dashboard: http://localhost:3000/d/order-tracker/order-tracker",
+    "summary": "5xx errors on /api/orders/{order_id}"
+  },
+  "externalURL": "http://localhost:3000/",
+  "version": "1",
+  "groupKey": "{}/{alertname=\"Order Tracker 5xx errors\"}:{alertname=\"Order Tracker 5xx errors\"}",
+  "truncatedAlerts": 0,
+  "orgId": 1,
+  "title": "[FIRING:1] Order Tracker 5xx errors (Order Tracker Alerts /api/orders/{order_id} critical)",
+  "state": "alerting",
+  "message": "**Firing**\n\nValue: A=3.250569230769231, C=1\nLabels:\n - alertname = Order Tracker 5xx errors\n - grafana_folder = Order Tracker Alerts\n - http_route = /api/orders/{order_id}\n - severity = critical\nAnnotations:\n - description = /api/orders/{order_id} returned 3.250569230769231 server error(s) (5xx) over the last 5 minutes. Dashboard: http://localhost:3000/d/order-tracker/order-tracker\n - summary = 5xx errors on /api/orders/{order_id}\nSource: http://localhost:3000/alerting/grafana/order-tracker-5xx/view?orgId=1\nSilence: http://localhost:3000/alerting/silence/new?alertmanager=grafana&matcher=alertname%3DOrder+Tracker+5xx+errors&matcher=grafana_folder%3DOrder+Tracker+Alerts&matcher=http_route%3D%2Fapi%2Forders%2F%7Border_id%7D&matcher=severity%3Dcritical&orgId=1\nDashboard: http://localhost:3000/d/order-tracker?orgId=1\nPanel: http://localhost:3000/d/order-tracker?orgId=1&viewPanel=2\n"
+}

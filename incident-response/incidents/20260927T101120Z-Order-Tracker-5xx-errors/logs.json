@@ -1,0 +1,309 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "streams",
+    "result": [
+      {
+        "stream": {
+          "code_file_path": "/app/app/main.py",
+          "code_function_name": "get_order",
+          "code_line_number": "153",
+          "detected_level": "info",
+          "flags": "3",
+          "observed_timestamp": "1790503861172463794",
+          "otelServiceName": "order-tracker",
+          "otelSpanID": "27d3ae8eccd63a61",
+          "otelTraceID": "9ad7ae14260dda15b72604695c768171",
+          "otelTraceSampled": "true",
+          "scope_name": "order_tracker",
+          "service_instance_id": "7da25dfb-9103-4a05-9817-ace9d5c179ba",
+          "service_name": "order-tracker",
+          "severity_number": "9",
+          "severity_text": "INFO",
+          "span_id": "27d3ae8eccd63a61",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.45.0",
+          "trace_id": "9ad7ae14260dda15b72604695c768171"
+        },
+        "values": [
+          [
+            "1790503861172393728",
+            "order lookup hit order_id=express-1002 status=preparing"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/app/app/main.py",
+          "code_function_name": "get_order",
+          "code_line_number": "153",
+          "detected_level": "info",
+          "flags": "3",
+          "observed_timestamp": "1790503859131356293",
+          "otelServiceName": "order-tracker",
+          "otelSpanID": "ebb56eb594934750",
+          "otelTraceID": "21d9ad21c02e8e11fd4e2a1ce89debc5",
+          "otelTraceSampled": "true",
+          "scope_name": "order_tracker",
+          "service_instance_id": "7da25dfb-9103-4a05-9817-ace9d5c179ba",
+          "service_name": "order-tracker",
+          "severity_number": "9",
+          "severity_text": "INFO",
+          "span_id": "ebb56eb594934750",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.45.0",
+          "trace_id": "21d9ad21c02e8e11fd4e2a1ce89debc5"
+        },
+        "values": [
+          [
+            "1790503859131245056",
+            "order lookup hit order_id=express-1002 status=preparing"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/app/app/main.py",
+          "code_function_name": "get_order",
+          "code_line_number": "153",
+          "detected_level": "info",
+          "flags": "3",
+          "observed_timestamp": "1790503857097690209",
+          "otelServiceName": "order-tracker",
+          "otelSpanID": "156181977e427aed",
+          "otelTraceID": "3771231d82f25bee54d0bd498db82ba6",
+          "otelTraceSampled": "true",
+          "scope_name": "order_tracker",
+          "service_instance_id": "7da25dfb-9103-4a05-9817-ace9d5c179ba",
+          "service_name": "order-tracker",
+          "severity_number": "9",
+          "severity_text": "INFO",
+          "span_id": "156181977e427aed",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.45.0",
+          "trace_id": "3771231d82f25bee54d0bd498db82ba6"
+        },
+        "values": [
+          [
+            "1790503857097544960",
+            "order lookup hit order_id=express-1002 status=preparing"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/app/app/main.py",
+          "code_function_name": "get_order",
+          "code_line_number": "153",
+          "detected_level": "info",
+          "flags": "3",
+          "observed_timestamp": "1790503807104543505",
+          "otelServiceName": "order-tracker",
+          "otelSpanID": "9fe8036a692d3e72",
+          "otelTraceID": "11f36dff4fd6e6ebca3991e99563a91a",
+          "otelTraceSampled": "true",
+          "scope_name": "order_tracker",
+          "service_instance_id": "7da25dfb-9103-4a05-9817-ace9d5c179ba",
+          "service_name": "order-tracker",
+          "severity_number": "9",
+          "severity_text": "INFO",
+          "span_id": "9fe8036a692d3e72",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.45.0",
+          "trace_id": "11f36dff4fd6e6ebca3991e99563a91a"
+        },
+        "values": [
+          [
+            "1790503807104247296",
+            "order lookup hit order_id=express-1002 status=preparing"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/app/app/main.py",
+          "code_function_name": "get_order",
+          "code_line_number": "149",
+          "detected_level": "info",
+          "flags": "3",
+          "observed_timestamp": "1790503614864350972",
+          "otelServiceName": "order-tracker",
+          "otelSpanID": "c908e2a23eefebf6",
+          "otelTraceID": "314626d102a1e1a1e3d19fdb96832860",
+          "otelTraceSampled": "true",
+          "scope_name": "order_tracker",
+          "service_instance_id": "884f0161-97cc-45ca-898a-aeaf54c18b8f",
+          "service_name": "order-tracker",
+          "severity_number": "9",
+          "severity_text": "INFO",
+          "span_id": "c908e2a23eefebf6",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.45.0",
+          "trace_id": "314626d102a1e1a1e3d19fdb96832860"
+        },
+        "values": [
+          [
+            "1790503614864172288",
+            "order lookup hit order_id=express-1002 status=preparing"
+          ]
+        ]
+      }
+    ],
+    "stats": {
+      "summary": {
+        "bytesProcessedPerSecond": 142975,
+        "linesProcessedPerSecond": 718,
+        "totalBytesProcessed": 995,
+        "totalLinesProcessed": 5,
+        "execTime": 0.006959,
+        "queueTime": 0.000238,
+        "subqueries": 0,
+        "totalEntriesReturned": 5,
+        "splits": 2,
+        "shards": 2,
+        "totalPostFilterLines": 5,
+        "totalStructuredMetadataBytesProcessed": 720
+      },
+      "querier": {
+        "store": {
+          "totalChunksRef": 0,
+          "totalChunksDownloaded": 0,
+          "chunksDownloadTime": 0,
+          "queryReferencedStructuredMetadata": false,
+          "chunk": {
+            "headChunkBytes": 0,
+            "headChunkLines": 0,
+            "decompressedBytes": 0,
+            "decompressedLines": 0,
+            "compressedBytes": 0,
+            "totalDuplicates": 0,
+            "postFilterLines": 0,
+            "headChunkStructuredMetadataBytes": 0,
+            "decompressedStructuredMetadataBytes": 0
+          },
+          "chunkRefsFetchTime": 0,
+          "congestionControlLatency": 0,
+          "pipelineWrapperFilteredLines": 0
+        }
+      },
+      "ingester": {
+        "totalReached": 2,
+        "totalChunksMatched": 3,
+        "totalBatches": 3,
+        "totalLinesSent": 5,
+        "store": {
+          "totalChunksRef": 0,
+          "totalChunksDownloaded": 0,
+          "chunksDownloadTime": 0,
+          "queryReferencedStructuredMetadata": false,
+          "chunk": {
+            "headChunkBytes": 995,
+            "headChunkLines": 5,
+            "decompressedBytes": 0,
+            "decompressedLines": 0,
+            "compressedBytes": 0,
+            "totalDuplicates": 0,
+            "postFilterLines": 5,
+            "headChunkStructuredMetadataBytes": 720,
+            "decompressedStructuredMetadataBytes": 0
+          },
+          "chunkRefsFetchTime": 175000,
+          "congestionControlLatency": 0,
+          "pipelineWrapperFilteredLines": 0
+        }
+      },
+      "cache": {
+        "chunk": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "index": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "result": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "statsResult": {
+          "entriesFound": 1,
+          "entriesRequested": 1,
+          "entriesStored": 1,
+          "bytesReceived": 212,
+          "bytesSent": 0,
+          "requests": 2,
+          "downloadTime": 8541,
+          "queryLengthServed": 0
+        },
+        "volumeResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "seriesResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "labelResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        },
+        "instantMetricResult": {
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "requests": 0,
+          "downloadTime": 0,
+          "queryLengthServed": 0
+        }
+      },
+      "index": {
+        "totalChunks": 0,
+        "postFilterChunks": 0,
+        "shardsDuration": 0
+      }
+    }
+  }
+}

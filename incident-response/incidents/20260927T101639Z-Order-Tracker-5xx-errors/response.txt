@@ -1,0 +1,10 @@
+This is a resolved notification, not an active incident. I made no file changes.
+
+- **Alert state:** the webhook status is `resolved` (Grafana state `ok`). It reports 0 server errors on `/api/orders/{order_id}` in the last 5 minutes.
+- **Metrics:** the 500 counter for this route reads about 3. That count is from an earlier window, before the current app instance started. Recent traffic is all 200s on `/healthz`.
+- **Logs:** all 5 entries are INFO. They are successful lookups, including `order_id=express-1002 status=preparing` on the new instance (`7da25dfb…`). There are no errors or tracebacks.
+- **Traces:** all 20 recent traces are healthy `GET /healthz` calls.
+
+The earlier 500s have a clear cause, and it's already fixed in the uncommitted changes to `app/main.py` (not yet committed). The old `order_detail` code computed express delivery estimates with `placed_at.replace(day=placed_at.day + 2)`. That raises a `ValueError` whenever the new day number is past the end of the month. The working tree now uses `placed_at + timedelta(days=2)`, and the successful `express-1002` lookups after the restart show the fix is live. Someone should commit that change so it isn't lost.
+
+Verdict: Non-issue: the alert has resolved, the 5xx bug is already fixed and deployed, and nothing needed changing.

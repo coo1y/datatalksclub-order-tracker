@@ -1,17 +1,36 @@
+import logging
 import os
 import sqlite3
+import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
+from opentelemetry import metrics, trace
 from pydantic import BaseModel, Field
+
+from app.telemetry import setup_telemetry
 
 
 DB_PATH = Path(os.getenv("ORDER_DB_PATH", "data/orders.db"))
 STATUSES = {"received", "preparing", "shipped", "delivered"}
+
+logger = logging.getLogger("order_tracker")
+tracer = trace.get_tracer("order_tracker")
+meter = metrics.get_meter("order_tracker")
+request_duration = meter.create_histogram(
+    name="http.server.request.duration",
+    unit="ms",
+    description="Duration of HTTP requests, labeled by route and status code",
+)
+request_counter = meter.create_counter(
+    name="http.server.requests",
+    unit="1",
+    description="Count of HTTP requests, labeled by route and status code",
+)
 
 
 def connect():
@@ -55,7 +74,7 @@ def order_detail(row):
     order = as_dict(row)
     if order["priority"] == "express":
         placed_at = datetime.fromisoformat(order["created_at"])
-        estimated_at = placed_at.replace(day=placed_at.day + 2)
+        estimated_at = placed_at + timedelta(days=2)
         order["estimated_delivery"] = estimated_at.date().isoformat()
     return order
 
@@ -77,6 +96,28 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="Order Tracker", lifespan=lifespan)
+setup_telemetry(app)
+
+
+@app.middleware("http")
+async def record_request_metrics(request: Request, call_next):
+    start = time.perf_counter()
+    status_code = 500
+    try:
+        response = await call_next(request)
+        status_code = response.status_code
+        return response
+    finally:
+        duration_ms = (time.perf_counter() - start) * 1000
+        route = request.scope.get("route")
+        route_path = route.path if route else request.url.path
+        attributes = {
+            "http.method": request.method,
+            "http.route": route_path,
+            "http.status_code": status_code,
+        }
+        request_duration.record(duration_ms, attributes=attributes)
+        request_counter.add(1, attributes=attributes)
 
 
 @app.get("/")
@@ -100,11 +141,17 @@ def list_orders():
 
 @app.get("/api/orders/{order_id}")
 def get_order(order_id: str):
-    with connect() as db:
-        row = db.execute("SELECT * FROM orders WHERE id = ?", (order_id,)).fetchone()
-    if row is None:
-        raise HTTPException(404, "Order not found")
-    return order_detail(row)
+    with tracer.start_as_current_span("get_order") as span:
+        span.set_attribute("order.id", order_id)
+        with connect() as db:
+            row = db.execute("SELECT * FROM orders WHERE id = ?", (order_id,)).fetchone()
+        if row is None:
+            span.set_attribute("order.found", False)
+            logger.warning("order lookup miss order_id=%s", order_id)
+            raise HTTPException(404, "Order not found")
+        span.set_attribute("order.found", True)
+        logger.info("order lookup hit order_id=%s status=%s", order_id, row["status"])
+        return order_detail(row)
 
 
 @app.post("/api/orders", status_code=201)

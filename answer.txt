@@ -1,0 +1,22 @@
+1. What does the health check return?
+{"status":"ok"}
+
+2. Which HTTP status code does the metric record for this lookup?
+200
+
+3. Which HTTP status code does the metric show?
+404 (standard-1002 isn't a seeded order; only standard-1001, express-1002, and standard-1003 exist)
+
+4. What state does Grafana show?
+Normal
+
+5. What did the agent respond? Include the last line from its answer.
+The agent recognized this was a test alert (alertname=ResponderTest, test=true), checked the saved metrics/logs/traces, found no errors (one normal 404 for standard-1002, no 5xx, no ERROR logs), and concluded no incident or escalation was needed.
+Last line: "Verdict: Test alert, not an incident. The service is healthy and no action or escalation is needed."
+
+6. What was the problem?
+Answer: The express delivery date calculation tried to use a day that does not exist in that month.
+order_detail() computed the estimate with placed_at.replace(day=placed_at.day + 2). express-1002
+is seeded with created_at set to the last day of the previous month, so day+2 always overflows
+past the end of that month (e.g. Aug 31 -> day 33), raising ValueError -> 500. Fixed by using
+placed_at + timedelta(days=2) instead.

@@ -1,0 +1,28 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "http_route": "/healthz",
+          "http_status_code": "200"
+        },
+        "value": [
+          1790503211.981,
+          "176.98838178539268"
+        ]
+      },
+      {
+        "metric": {
+          "http_route": "/api/orders/{order_id}",
+          "http_status_code": "404"
+        },
+        "value": [
+          1790503211.981,
+          "1.005615805598822"
+        ]
+      }
+    ]
+  }
+}
